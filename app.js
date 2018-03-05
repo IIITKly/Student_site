@@ -12,7 +12,7 @@ app.use(methodOverride('_method'));
 
 app.get('/',function(req,res){
 
-	res.send("landing page");
+	res.render("landing");
 });
 
 app.listen(3000,function(){
