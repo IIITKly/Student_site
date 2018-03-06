@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+	<div class ="container " >
+	<div style= "width:30% ;margin : 25px auto;" >
+		<h3>Your Blog</h3>
+		<form method = "POST" action = "/blog">
+		<div class = "form-group" >
+
+			<input type = "text" name ="blog[name]" placeholder = "Blog title" class="form-control">
+		
+		</div>
+		<div class = "form-group" >
+
+			<input type = "text" name ="blog[category]" placeholder = "Blog category" class="form-control">
+		
+		</div>
+		<div class = "form-group">
+			
+			<input type = "text" name ="blog[image]" placeholder = "your img link" class="form-control">
+		
+		</div>
+		<div class = "form-group">
+			
+			<textarea name ="blog[description]" placeholder = "Description" class="form-control"> </textarea>
+		
+		</div>
+		<div class = "form-group">
+			
+			<button class= "btn btn-lg btn-success btn-block" >submit!!</button>
+		
+		</div>
+		</form>
+		<a href = "/" class = "btn btn-primary"> Go back </a>
+		</div>
+	</div>
+<% include ../partials/footer %>

@@ -3,6 +3,7 @@
 
 <div class="jumbotron">
 		<h1 class="text-center">Landing Page</h1>
+    <a href="/blog/new" class="btn btn-primary btn-lg">Create Blog</a>
 	</div>
 <div class="container">
 
@@ -11,40 +12,63 @@
 			<div class="col-md-3">
 
 
+				<div class="row-offcanvas row-offcanvas-left">
+       <div id="sidebar" class="sidebar-offcanvas">
+      <div class="col-md-12">
+        <h3>Communities</h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+          <li><a href="#">Section</a></li>
+        </ul>
+      </div>
+  </div>
 
-		  <ul id="slide-out" class="side-nav">
-		    <li><div class="user-view">
-		      <div class="background">
-		        <img src="images/office.jpg">
-		      </div>
-		      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-		      <a href="#!name"><span class="white-text name">John Doe</span></a>
-		      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-		    </div></li>
-		    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-		    <li><a href="#!">Second Link</a></li>
-		    <li><div class="divider"></div></li>
-		    <li><a class="subheader">Subheader</a></li>
-		    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-		  </ul>
-		  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-        
 
 
 		</div>
+</div>
 
 		<div class="col-md-9">
 
 
+      
+    <div class="row">
+		<div class="col-sm-4">
+      <% blog.forEach(function(body){ %>
 
-			<div class="container">
-			<ul>
-				<li>Deep Learning</li>
-				<li>Algorithm</li>
-				<li>Web Development</li>
-				<li>Andriod Development</li>
-			</ul>
-		</div>
+                      <a href="#" >
+                          <div class="thumbnail">
+                              <img src="<%= body.image %>">
+                              <div class="caption">
+                                  <h3><%= body.name %></h3>
+                                  <p><%= body.description.substring(0,100) %></p>
+                              </div>
+                          </div>
+                      </a>
+                 <%  }); %>
+              </div>
+          </div>
+	
+</div>
+	
+
 
 
 	</div>
@@ -53,22 +77,6 @@
 		</div>
 
 </div>
-<script type="text/javascript">
-	
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 300
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true, // Choose whether you can drag to open on touch screens,
-      onOpen: function(el) { /* Do Stuff*/ }, // A function to be called when sideNav is opened
-      onClose: function(el) { /* Do Stuff*/ }, // A function to be called when sideNav is closed
-    }
-  );
-   // Show sideNav
-  $('.button-collapse').sideNav('show');
-  // Hide sideNav
-  $('.button-collapse').sideNav('hide');
-  // Destroy sideNav
-  $('.button-collapse').sideNav('destroy');
-</script>
+
+
 <% include ./partials/footer %>
