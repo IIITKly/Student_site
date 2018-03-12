@@ -6,10 +6,12 @@ var Blog = require("./models/Blog");
 var Comments = require("./models/Comment");
 var User     = require('./models/User');
 
+var app = express();
 var passport =require('passport');
 var LocalStrategy = require('passport-local');
+var passportLocalMongoose = require('passport-local-mongoose');
 
-var app = express();
+
 mongoose.connect('mongodb://localhost/Student_site');
 app.use(express.static(__dirname +"/public"));
 
@@ -69,15 +71,50 @@ app.get('/',function(req,res){
 ======================
 Login  & Register Routes
 ======================
-
 */
+//show register form
+app.get('/register',function(req,res){
+	res.render('User/register');
+});
+
+//Handle regiter
+app.post('/register',function(req,res){
+	
+	var temp = req.body.user;
+	console.log("=======");
+	//console.log(temp);
+	var newUser = new User({
+		username : temp.username,
+		first_name :temp.first_name,
+		last_name : temp.last_name,
+		email :temp.email
+	});
+	//console.log(newUser);
+	User.register(newUser,temp.password,function(err,user){
+		if (err){
+			console.log(err);
+			console.log(user);
+			return res.redirect('/register');
+		}
+		console.log(user);
+		passport.authenticate('local')(req,res,function(){
+					console.log(req.currentUser);
+					res.redirect('/');
+			})
+
+		})
+	
+
+	
+});
+
+
+
+
 app.get('/login',function(req,res){
-	if (err){
-		res.redirect('back');
-	}
-	else{
+	
 		res.render('User/login');
-	}
+	
 });
 
 
@@ -90,6 +127,9 @@ app.post('/login',
 
 });
 
+
+
+
 /*
 =====================
 Blog Route
@@ -101,21 +141,6 @@ Blog Route
 app.get('/blog/new',function(req,res){
 	res.render('Blog/new');
 })
-
-
-
-
-/*
-=====================
-    Login Route
-=====================
-*/
-//New route
-
-app.get('/blog/login',function(req,res){
-	res.render('Blog/login');
-})
-
 
 
 //Create route
@@ -131,16 +156,7 @@ app.post('/blog',function(req,res){
 })
 
 
-app.post('/blog',function(req,res){
-	if(err)
-	{
-		console.log("error");
 
-	}
-	else{
-		console.log(req.body);
-	}
-})
 
 app.listen(3001,function(){
 	console.log("server started");
