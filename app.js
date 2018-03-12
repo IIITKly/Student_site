@@ -130,6 +130,18 @@ app.post('/blog',function(req,res){
 	})
 })
 
-app.listen(3000,function(){
+
+app.post('/blog',function(req,res){
+	if(err)
+	{
+		console.log("error");
+
+	}
+	else{
+		console.log(req.body);
+	}
+})
+
+app.listen(3001,function(){
 	console.log("server started");
 });
