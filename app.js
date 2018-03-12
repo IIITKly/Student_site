@@ -25,7 +25,7 @@ Authentication
 
 
 app.use(require('express-session')({
-	
+
 	secret:"This sentences is used as encription key",
 	resave:false,
 	saveUninitialized:false
@@ -60,9 +60,9 @@ app.get('/',function(req,res){
 		else{
 			res.render("landing",{blog:body});
 		}
-		
+
 	})
-	
+
 });
 
 /*
@@ -96,9 +96,26 @@ Blog Route
 =====================
 */
 //New route
+
+
 app.get('/blog/new',function(req,res){
 	res.render('Blog/new');
 })
+
+
+
+
+/*
+=====================
+    Login Route
+=====================
+*/
+//New route
+
+app.get('/blog/login',function(req,res){
+	res.render('Blog/login');
+})
+
 
 
 //Create route
@@ -113,6 +130,18 @@ app.post('/blog',function(req,res){
 	})
 })
 
-app.listen(3000,function(){
+
+app.post('/blog',function(req,res){
+	if(err)
+	{
+		console.log("error");
+
+	}
+	else{
+		console.log(req.body);
+	}
+})
+
+app.listen(3001,function(){
 	console.log("server started");
 });
