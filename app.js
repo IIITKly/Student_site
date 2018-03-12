@@ -25,7 +25,7 @@ Authentication
 
 
 app.use(require('express-session')({
-	
+
 	secret:"This sentences is used as encription key",
 	resave:false,
 	saveUninitialized:false
@@ -60,9 +60,9 @@ app.get('/',function(req,res){
 		else{
 			res.render("landing",{blog:body});
 		}
-		
+
 	})
-	
+
 });
 
 /*
@@ -87,7 +87,7 @@ app.post('/login',
 		failureRedirect : 'back'
 	}),
 	function (req,res){
-	
+
 });
 
 /*
