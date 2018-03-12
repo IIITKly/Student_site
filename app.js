@@ -71,9 +71,26 @@ Blog Route
 =====================
 */
 //New route
+
+
 app.get('/blog/new',function(req,res){
 	res.render('Blog/new');
 })
+
+
+
+
+/*
+=====================
+    Login Route
+=====================
+*/
+//New route
+
+app.get('/blog/login',function(req,res){
+	res.render('Blog/login');
+})
+
 
 
 //Create route
