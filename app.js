@@ -66,6 +66,31 @@ app.get('/',function(req,res){
 });
 
 /*
+======================
+Login  & Register Routes
+======================
+
+*/
+app.get('/login',function(req,res){
+	if (err){
+		res.redirect('back');
+	}
+	else{
+		res.render('User/login');
+	}
+});
+
+
+app.post('/login',
+	passport.authenticate('local',{
+		successRedirect : '/',
+		failureRedirect : 'back'
+	}),
+	function (req,res){
+	
+});
+
+/*
 =====================
 Blog Route
 =====================
